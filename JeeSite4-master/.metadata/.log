@@ -1,0 +1,23 @@
+!SESSION 2020-10-13 00:22:54.910 -----------------------------------------------
+eclipse.buildId=4.12.0.I20190605-1800
+java.version=1.8.0_191
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.egit.core 1 0 2020-10-13 00:23:13.870
+!MESSAGE Using Apache MINA sshd as ssh client.
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-10-13 00:23:25.733
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Administrator'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.core.jobs 4 1 2020-10-13 00:24:19.784
+!MESSAGE Worker thread ended job: Updating Maven Dependencies(656), but still holds rule: ThreadJob(Updating Maven Dependencies(656),[R/])
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-10-13 00:24:21.032
+!MESSAGE The workspace will exit with unsaved changes in this session.

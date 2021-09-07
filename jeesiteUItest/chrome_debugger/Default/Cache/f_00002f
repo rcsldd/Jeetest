@@ -1,0 +1,265 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta content="webkit" name="renderer"/><meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="PoweredByJeeSiteV4.0"/><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta name="description" content="PoweredByJeeSiteV4.0"/><meta content="no-cache" http-equiv="Pragma"/><meta http-equiv="Expires" content="0"/>
+<meta content="width=device-width, initial-scale=1, user-scalable=1" name="viewport"/>
+<title>JeeSite Demo</title>
+<link rel="shortcut icon" href="/jeesite/static/favicon.png" type="image/png">
+<script src="/jeesite/global.min.js?ctx=/jeesite/a"></script>
+<script src="/jeesite/static/jquery/jquery-1.12.4.min.js"></script>
+<!-- <script src="/jeesite/static/jquery/jquery-migrate-1.4.1.min.js"></script> -->
+<!--[if lt IE 9]><script src="/jeesite/static/common/h5fix.min.js"></script><![endif]-->
+<link rel="stylesheet" href="/jeesite/static/fonts/font-icons.min.css">
+<link rel="stylesheet" href="/jeesite/static/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/jeesite/static/select2/4.0/select2.css?V4.1-03101040">
+<link rel="stylesheet" href="/jeesite/static/icheck/1.0/minimal/grey.css?V4.1-03101040">
+<link rel="stylesheet" href="/jeesite/static/wdScrollTab/css/TabPanel.css?V4.1-03101040">
+<link rel="stylesheet" href="/jeesite/static/adminlte/css/AdminLTE.min.css?V4.1-03101040">
+<link rel="stylesheet" href="/jeesite/static/common/jeesite.css?V4.1-03101040">
+<link rel="stylesheet" href="/jeesite/static/adminlte/css/skins/skin-blue-light2.css?V4.1-03101040">
+<link rel="stylesheet" href="/jeesite/static/common/common.css?V4.1-03101040"></head><body class="hold-transition fixed noscroll2 sidebar-mini ">
+<div class="wrapper"><!--[if lte IE 9]><a style="position:absolute;top:0;left:0;z-index:100000;display:block;width:100%;font-size:14px;color:#F00;text-decoration:none;background-color:#faffb3;text-align:center;"
+href="/jeesite/static/upbw/index.html" target="_blank" onclick="$(this).remove()">您的浏览器版本过低或在兼容模式下，导致打开速度过慢，提升速度您可以切换到极速模式或升级为最新版，点击此处查看详情。</a><![endif]-->
+<!--[if lte IE 8]><script>window.location.href='/jeesite/static/upbw/index.html';</script><![endif]-->
+<link rel="stylesheet" href="/jeesite/static/jquery-toastr/2.0/toastr.min.css?V4.1-03101040">
+<link rel="stylesheet" href="/jeesite/static/modules/sys/sysIndex.css?V4.1-03101040">
+<header class="main-header">
+<nav class="navbar navbar-static-top">
+	<div class="logo" data-toggle="push-menu">
+		<b>JeeSite Demo</b>
+		<small>&nbsp; &nbsp;<i class="fa fa-bars"></i></small>
+	</div>
+	
+	<div class="navbar-custom-menu">
+		<ul class="nav navbar-nav">
+<li><a href="http://jeesite.com" target="_blank"><i class="fa fa-diamond"></i> 官方网站</a></li>
+			<li><a href="javascript:" id="fullScreen" title="全屏" data-placement="bottom" data-container="body"><i class="fa fa-arrows-alt"></i></a></li>
+			<li><a href="javascript:" id="switchSkin" title="切换主题" style="margin-top:-1px;" data-placement="bottom" data-container="body"><i class="fa fa-dashboard"></i></a></li>
+<li>
+	<a href="javascript:" id="btnOnline" data-href="/jeesite/a/sys/online/list" data-title="在线人员" title="在线人员"
+		class="addTabPage " data-placement="bottom" data-container="body">
+		<i class="icon-people"></i><span id="onlineCount" class="label label-success">0</span>
+	</a>
+	<script>
+		function refreshOnlineCount(){
+			$.get('/jeesite/a/sys/online/count?__notUpdateSession=true&__t='
+					+ new Date().getTime(), function(data){
+				try{$('#onlineCount').html(Number(data))}catch(e){}
+			})
+		}
+		refreshOnlineCount(); // 先执行一次
+		setInterval(refreshOnlineCount, 180000); // 3分钟执行一次
+		$(function(){$('#btnOnline').tooltip()});
+	</script>
+</li><li class="dropdown user-menu mr5">
+	<a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+		<img src="/jeesite/static/images/user1.jpg" class="user-image">
+		<span class="hidden-xs">系统管理员</span>
+	</a>
+	<ul class="dropdown-menu">
+		<li class="mt5">
+			<a id="userInfo" href="javascript:" data-href="/jeesite/a/sys/user/info" class="addTabPage">
+			<i class="fa fa-user"></i> 个人中心</a>
+		</li>
+		<li>
+			<a id="modifyPassword" href="javascript:" data-href="/jeesite/a/sys/user/info?op=pwd" class="addTabPage">
+			<i class="fa fa-key"></i> 修改密码</a>
+		</li>
+		<li class="divider"></li>
+		<li>
+			<a href="/jeesite/a/logout">
+			<i class="fa fa-sign-out"></i> 退出登录</a>
+		</li>
+		<li class="mt10"></li>
+		<li class="mt10"></li>
+	</ul>
+</li>		</ul>
+	</div>
+</nav></header>
+<aside class="main-sidebar">
+<section class="sidebar">
+	<div class="user-panel">
+		<div class="pull-left image">
+			<img data-href="/jeesite/a/sys/user/info" data-title="个人中心" class="img-circle pointer"
+				src="/jeesite/static/images/user1.jpg">
+			<script>
+				$(function(){
+					if ($(window).width() <= 767){
+						$('body').append('<div class="btn btn-default full-screen-menu"><i class="fa fa-bars"></i></div>');
+					}
+					$('.full-screen-menu,.user-panel .img-circle').click(function(){
+						if (!$('.main-header').is(':hidden')){
+							$('.main-header').slideUp(100, function(){
+								if (($(window).width() > 767 && !$('body').hasClass('sidebar-collapse'))
+										|| $('body').hasClass('sidebar-open')){
+									$('[data-toggle="push-menu"]').click();
+								}
+							});
+						}else{
+							$('.main-header').slideDown(100, function(){
+								setTimeout(function(){
+									if (true){
+										$('[data-toggle="push-menu"]').click();
+									}
+								},100);
+							});
+						}
+						setTimeout(function(){
+							$('#tabpanel').tabPanel('resize');
+						},500);
+					});
+					$('#leftMenu').on('click', '.addTabPage', function (e) {
+						if ($(window).width() <= 767 && $('body').hasClass('sidebar-open')){
+							var href = $(this).data('href');
+				        	if (href != '' && href != 'blank'){
+				        		if ($(window).width() <= 767){
+					        		$('.full-screen-menu').click();
+				        		}
+							}
+						}
+					});
+				})
+			</script>
+		</div>
+		<div class="pull-left info">
+			<p>系统管理员</p>
+			<a href="javascript:"><i class="fa fa-circle text-success"></i> 在线</a>
+			<a href="/jeesite/a/logout"><i class="fa fa-sign-out text-danger"></i> 注销</a>
+		</div>
+	</div>
+	<div id="leftMenu" data-widget="tree">
+		<ul class="sidebar-menu">
+<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="系统管理" data-code="1315844300648493056"><i class="fa fa-fw icon-settings"></i> <span>系统管理</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="组织管理" data-code="1315844302070362112"><i class="fa fa-fw icon-grid"></i> <span>组织管理</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/empUser/index" class="addTabPage" title="用户管理" data-code="1315844303353819136"><i class="fa fa-fw icon-user"></i> <span>用户管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/office/index" class="addTabPage" title="机构管理" data-code="1315844312791003136"><i class="fa fa-fw icon-grid"></i> <span>机构管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/company/list" class="addTabPage" title="公司管理" data-code="1315844317064998912"><i class="fa fa-fw icon-fire"></i> <span>公司管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/post/list" class="addTabPage" title="岗位管理" data-code="1315844320999256064"><i class="fa fa-fw icon-trophy"></i> <span>岗位管理</span></a></li>
+
+</ul></li>
+
+<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="权限管理" data-code="1315844325227114496"><i class="fa fa-fw icon-social-dropbox"></i> <span>权限管理</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/role/list" class="addTabPage" title="角色管理" data-code="1315844326577680384"><i class="fa fa-fw icon-people"></i> <span>角色管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/secAdmin/list" class="addTabPage" title="二级管理员" data-code="1315844327873720320"><i class="fa fa-fw icon-user-female"></i> <span>二级管理员</span></a></li>
+
+</ul></li>
+
+<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="系统设置" data-code="1315844330583240704"><i class="fa fa-fw icon-settings"></i> <span>系统设置</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/config/list" class="addTabPage" title="参数设置" data-code="1315844334563635200"><i class="fa fa-fw icon-wrench"></i> <span>参数设置</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/dictType/list" class="addTabPage" title="字典管理" data-code="1315844335863869440"><i class="fa fa-fw icon-social-dropbox"></i> <span>字典管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/area/list" class="addTabPage" title="行政区划" data-code="1315844342474092544"><i class="fa fa-fw icon-map"></i> <span>行政区划</span></a></li>
+
+</ul></li>
+
+<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="系统监控" data-code="1315844346571927552"><i class="fa fa-fw icon-ghost"></i> <span>系统监控</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/log/list" class="addTabPage" title="访问日志" data-code="1315844347859578880"><i class="fa fa-fw fa fa-bug"></i> <span>访问日志</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/sys/online/list" class="addTabPage" title="在线用户" data-code="1315844354612408320"><i class="fa fa-fw icon-social-twitter"></i> <span>在线用户</span></a></li>
+
+</ul></li>
+
+<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="消息推送" data-code="1315844357389037568"><i class="fa fa-fw icon-envelope-letter"></i> <span>消息推送</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="/jeesite/a/msg/msgPush/list" class="addTabPage" title="未完成消息" data-code="1315844359104507904"><i class="fa fa-fw fa-circle-o"></i> <span>未完成消息</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/msg/msgPush/list?pushed=true" class="addTabPage" title="已完成消息" data-code="1315844360392159232"><i class="fa fa-fw fa-circle-o"></i> <span>已完成消息</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/msg/msgTemplate/list" class="addTabPage" title="消息模板管理" data-code="1315844361742725120"><i class="fa fa-fw fa-circle-o"></i> <span>消息模板管理</span></a></li>
+
+</ul></li>
+
+</ul></li>
+
+<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="我的工作" data-code="1315844391224487936"><i class="fa fa-fw icon-screen-desktop"></i> <span>我的工作</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="文件管理" data-code="1315844392302424064"><i class="fa fa-fw icon-folder"></i> <span>文件管理</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="/jeesite/a/filemanager/index" class="addTabPage" title="文件管理" data-code="1315844393606852608"><i class="fa fa-fw fa-circle-o"></i> <span>文件管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/filemanager/filemanagerShared/list" class="addTabPage" title="文件分享" data-code="1315844394890309632"><i class="fa fa-fw fa-circle-o"></i> <span>文件分享</span></a></li>
+
+</ul></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/msg/msgInner/list" class="addTabPage" title="站内消息" data-code="1315844396337344512"><i class="fa fa-fw icon-speech"></i> <span>站内消息</span></a></li>
+
+</ul></li>
+
+<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="业务流程" data-code="1315844402200981504"><i class="fa fa-fw icon-social-foursqare"></i> <span>业务流程</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="流程办理" data-code="1315844403392163840"><i class="fa fa-fw icon-control-forward"></i> <span>流程办理</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="/jeesite/a/bpm/bpmMyTask/todoList" class="addTabPage" title="待办任务" data-code="1315844404784672768"><i class="fa fa-fw fa-circle-o"></i> <span>待办任务</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/bpm/bpmMyTask/historyList" class="addTabPage" title="已办任务" data-code="1315844406110072832"><i class="fa fa-fw fa-circle-o"></i> <span>已办任务</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/bpm/bpmMyRuntime/list" class="addTabPage" title="与我相关流程" data-code="1315844407443861504"><i class="fa fa-fw fa-circle-o"></i> <span>与我相关流程</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/oa/oaLeave/list" class="addTabPage" title="请假单管理(示例)" data-code="1315844408832176128"><i class="fa fa-fw fa-circle-o"></i> <span>请假单管理(示例)</span></a></li>
+
+</ul></li>
+
+<li class="treeview"><a href="javascript:" data-href="blank" class="addTabPage" title="流程管控" data-code="1315844410207907840"><i class="fa fa-fw icon-paypal"></i> <span>流程管控</span>
+	<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a><ul class="treeview-menu">
+
+			<li class="treeview"><a href="javascript:" data-href="/jeesite/a/bpm/bpmCategory/list" class="addTabPage" title="流程分类管理" data-code="1315844414628704256"><i class="fa fa-fw fa-circle-o"></i> <span>流程分类管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/bpm/modeler/index.html" class="addTabPage" title="流程模型设计" data-code="1315844411537502208"><i class="fa fa-fw fa-circle-o"></i> <span>流程模型设计</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/bpm/bpmCategory/index/process" class="addTabPage" title="流程定义管理" data-code="1315844412980342784"><i class="fa fa-fw fa-circle-o"></i> <span>流程定义管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/bpm/bpmRuntime/list" class="addTabPage" title="流程实例管理" data-code="1315844415975075840"><i class="fa fa-fw fa-circle-o"></i> <span>流程实例管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/bpm/bpmTask/list" class="addTabPage" title="流程任务管理" data-code="1315844417313058816"><i class="fa fa-fw fa-circle-o"></i> <span>流程任务管理</span></a></li>
+
+<li class="treeview"><a href="javascript:" data-href="/jeesite/a/bpm/bpmScript/list" class="addTabPage" title="流程脚本管理" data-code="1315844418638458880"><i class="fa fa-fw fa-circle-o"></i> <span>流程脚本管理</span></a></li>
+
+</ul></li>
+
+</ul></li>
+
+		</ul>
+	</div>
+</section></aside>
+<div class="content-wrapper">
+	<div id="tabpanel"></div>
+</div>
+</div>
+
+<a id="scroll-up" href="#" class="btn btn-sm"><i class="fa fa-angle-double-up"></i></a>
+<script src="/jeesite/static/bootstrap/js/bootstrap.min.js"></script>
+<script src="/jeesite/static/select2/4.0/select2.js?V4.1-03101040"></script>
+<script src="/jeesite/static/select2/4.0/i18n/zh_CN.js?V4.1-03101040"></script>
+<script src="/jeesite/static/layer/3.1/layer.js?V4.1-03101040"></script>
+<script src="/jeesite/static/laydate/5.0/laydate.js?V4.1-03101040"></script>
+<script src="/jeesite/static/wdScrollTab/js/TabPanel.js?V4.1-03101040"></script>
+<script src="/jeesite/static/wdScrollTab/js/TabPanel.extend.js?V4.1-03101040"></script>
+<script src="/jeesite/static/wdScrollTab/js/TabPanel_i18n.js?V4.1-03101040"></script>
+<script src="/jeesite/static/common/jeesite.js?V4.1-03101040"></script>
+<script src="/jeesite/static/common/i18n/jeesite_zh_CN.js?V4.1-03101040"></script>
+<script src="/jeesite/static/common/common.js?V4.1-03101040"></script>
+<div class="hide" id="desktopTabPage" data-title="仪表盘"
+	data-url="/jeesite/a/desktop"></div>
+<div class="hide" id="modifyPasswordTip" data-message="您的密码已经 191 天未修改了，请修改密码！"></div>
+<script src="/jeesite/static/jquery-toastr/2.0/toastr.min.js?V4.1-03101040"></script>
+<script src="/jeesite/static/jquery-plugins/jquery.slimscroll.js"></script>
+<script src="/jeesite/static/modules/sys/sysIndex.js?V4.1-03101040"></script>

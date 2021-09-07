@@ -1,0 +1,19 @@
+[32mINFO    [0m root:Base_logging.py:29 当前页面：Main
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:388 POST http://127.0.0.1:54725/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": [], "debuggerAddress": "127.0.0.1:9222"}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": [], "debuggerAddress": "127.0.0.1:9222"}}}
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:206 Starting new HTTP connection (1): 127.0.0.1:54725
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 http://127.0.0.1:54725 "POST /session HTTP/1.1" 200 630
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:440 Finished Request
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:388 POST http://127.0.0.1:54725/session/e10e0a51e2a31f856b3bdb753bbd1fca/timeouts {"implicit": 3000}
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 http://127.0.0.1:54725 "POST /session/e10e0a51e2a31f856b3bdb753bbd1fca/timeouts HTTP/1.1" 200 14
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:440 Finished Request
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:388 POST http://127.0.0.1:54725/session/e10e0a51e2a31f856b3bdb753bbd1fca/url {"url": "http://120.24.21.52:8980/jeesite/a/index"}
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 http://127.0.0.1:54725 "POST /session/e10e0a51e2a31f856b3bdb753bbd1fca/url HTTP/1.1" 200 14
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:440 Finished Request
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:388 POST http://127.0.0.1:54725/session/e10e0a51e2a31f856b3bdb753bbd1fca/element {"using": "xpath", "value": "//*[@id=\"kw111\"]"}
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 http://127.0.0.1:54725 "POST /session/e10e0a51e2a31f856b3bdb753bbd1fca/element HTTP/1.1" 404 993
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:440 Finished Request
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:388 GET http://127.0.0.1:54725/session/e10e0a51e2a31f856b3bdb753bbd1fca/screenshot {}
+[35mDEBUG   [0m urllib3.connectionpool:connectionpool.py:396 http://127.0.0.1:54725 "GET /session/e10e0a51e2a31f856b3bdb753bbd1fca/screenshot HTTP/1.1" 200 257088
+[35mDEBUG   [0m selenium.webdriver.remote.remote_connection:remote_connection.py:440 Finished Request
+[32mINFO    [0m root:Base_logging.py:29 截图成功，保存路径:D:\code\jeebiteUItest\result\images\2021-05-26,截图名字:Main-20_28_55-元素定位查找失败.png
+[31m[1mERROR   [0m root:Base_logging.py:35 元素//*[@id="kw111"]无法找到

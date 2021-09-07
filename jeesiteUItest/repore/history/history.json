@@ -1,0 +1,22 @@
+{
+  "242350432f703a6f4f9f8ed55c2acd0b" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 1,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "99a5410d17f61395",
+      "status" : "broken",
+      "statusDetails" : "selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {\"method\":\"xpath\",\"selector\":\"//*[@id=\"kw111\"]\"}\n  (Session info: chrome=91.0.4472.77)",
+      "time" : {
+        "start" : 1622032132599,
+        "stop" : 1622032135952,
+        "duration" : 3353
+      }
+    } ]
+  }
+}

@@ -1,0 +1,11 @@
+[ {
+  "uid" : "99a5410d17f61395",
+  "name" : "test_find_error",
+  "time" : {
+    "start" : 1622032132599,
+    "stop" : 1622032135952,
+    "duration" : 3353
+  },
+  "status" : "broken",
+  "severity" : "normal"
+} ]
