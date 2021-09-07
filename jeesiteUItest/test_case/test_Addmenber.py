@@ -9,4 +9,4 @@ class TestAddMenber:
     def test_Add_menber(self):
         add_menber = self.main.goto_user_management()
         add_menber.AddMenber()
-        assert add_menber.get_menber('嘟嘟D')
+        assert add_menber.get_menber('D')
